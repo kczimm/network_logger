@@ -1,0 +1,30 @@
+syntax = "proto3";
+package log;
+
+service Logger {
+  rpc log (LogRequest) returns (LogReply);
+  rpc level (LevelRequest) returns (LevelReply);
+}
+
+message LogRequest {
+  string message = 1;
+}
+
+message LogReply {
+  string message = 1;
+}
+
+message LevelRequest {
+  string message = 1;
+}
+
+message LevelReply {
+  enum Level {
+    ERROR = 0;
+    WARN = 1;
+    INFO = 2;
+    DEBUG = 3;
+    TRACE = 4;
+  }
+  Level level = 1;
+}
